@@ -210,3 +210,4 @@ class Warrior(GameCharacter):
         
 warrior_player = Warrior().login()
 mage_player = Mage().login()
+
