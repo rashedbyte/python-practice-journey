@@ -126,31 +126,31 @@
 # # processing fee using super() without duplicating parent core transaction steps.
 # # ==============================================================================
 
-# class BankAccount:
-#     def __init__(self, account_holder, balance):
-#         self.balance = balance 
-#         self.account_holder = account_holder
+class BankAccount:
+    def __init__(self, account_holder, balance):
+        self.balance = balance 
+        self.account_holder = account_holder
         
-#     def transfer_money(self, amount):
-#         # Good Practice: Using 'amount' directly without binding it to 'self'
-#         print("Step 01: Verifying account security and biometric data...")
-#         print(f"Step 02: {self.account_holder} transferred ${amount} successfully!")
+    def transfer_money(self, amount):
+        # Good Practice: Using 'amount' directly without binding it to 'self'
+        print("Step 01: Verifying account security and biometric data...")
+        print(f"Step 02: {self.account_holder} transferred ${amount} successfully!")
         
-# print("_________________________________")
+print("_________________________________")
 
-# class PremiumAccount(BankAccount):
-#     # Since PremiumAccount uses the exact same input data, 
-#     # we don't need to define a separate __init__ constructor here.
+class PremiumAccount(BankAccount):
+    # Since PremiumAccount uses the exact same input data, 
+    # we don't need to define a separate __init__ constructor here.
     
-#     def transfer_money(self, amount):
-#         # Calling parent method to execute Step 1 and Step 2 dynamically
-#         super().transfer_money(amount)
-#         print("Step 03: Charging an extra $5 Premium Lounge Processing Fee.")
+    def transfer_money(self, amount):
+        # Calling parent method to execute Step 1 and Step 2 dynamically
+        super().transfer_money(amount)
+        print("Step 03: Charging an extra $5 Premium Lounge Processing Fee.")
 
         
-# print("Processing Start...")
-# pre_acc = PremiumAccount('Mr. Ali', 23000)
-# pre_acc.transfer_money(3400)
+print("Processing Start...")
+pre_acc = PremiumAccount('Mr. Ali', 23000)
+pre_acc.transfer_money(3400)
 
 
 
