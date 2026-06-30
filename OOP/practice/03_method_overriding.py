@@ -75,3 +75,32 @@ IslamiBank().calculate_interest()
 # If the name is different, it becomes a new separate method, not overriding. 
 # Overriding means replacing the parent's behavior while keeping the signature identical.
 # ==============================================================================
+
+
+
+# ==============================================================================
+# Topic: Quiz Reflection - Method Overriding Proof of Concept
+# Objective: Proving that Python executes the overridden child method instead 
+# of the parent method when called from a child object.
+# ==============================================================================
+
+class Vehicle:
+    def __init__(self):
+        pass
+        
+    def fuel_type(self):
+        print("Printed from Vehicle class")
+        
+class ElectricCar(Vehicle):
+    def __init__(self):
+        pass
+        
+    # Successfully overriding the parent method with the exact same name
+    def fuel_type(self):
+        print("Printed from ElectricCar class")
+    
+# Creating the child object and calling the method instantly in one line
+car1 = ElectricCar().fuel_type()
+
+# Output: Printed from ElectricCar class
+# ==============================================================================
