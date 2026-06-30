@@ -104,3 +104,109 @@ car1 = ElectricCar().fuel_type()
 
 # Output: Printed from ElectricCar class
 # ==============================================================================
+
+
+
+
+# ==============================================================================
+# topic : quiz reflection - method overriding parent method and child method using super().
+# Objective : learning super() method to use child class a  parent method and also child method.
+# ==============================================================================
+
+
+class Hero:
+    def __init__(self):
+        pass
+    
+    def attack(self): # hero's normal power method
+        print("Normal Punch ! ")
+        
+class SuperHero(Hero):
+    def __init__(self):
+        pass
+    
+    def attack(self):
+        super().attack() #successfully overriding with super() method
+        print("Laser Beam !") # hero's extra power
+        
+
+# create push_punch object 
+PushPunch = SuperHero()
+# attack
+PushPunch.attack()
+
+
+
+# Approach 1: without super() method , worst case
+
+class GameCharacter: 
+    def __init__(self):
+        pass
+    
+    def login(self):
+        print("1. checking sever connection....")
+        print("2. Loading player data and inventory....")
+        print("3. Rendering 3D character model....")
+        
+class Warrior(GameCharacter):
+    def __init__(self):
+        pass
+    
+    def login(self):
+        # parent line
+        print("1. checking sever connection....")
+        print("2. Loading player data and inventory....")
+        print("3. Rendering 3D character model....")
+        # child extra line 
+        print("4. Warrior : equip heavy sword and iron shield.")
+        
+class Mage(GameCharacter):
+    def __init__(self):
+        pass
+    
+    def login(self):
+        print("1. checking sever connection....")
+        print("2. Loading player data and inventory....")
+        print("3. Rendering 3D character model....")
+        
+        # child extra line  
+        print("4. Mage : equip magical staff and mana potions.")
+        
+
+
+warrior_p = Warrior().login()
+mage_p = Mage().login()
+
+# when i write every login def function with 3 parents print line , then we don't need parent class because parent class is not need for this type of problem.
+
+
+# APPROaCH 2 : using super() method , this is good practice for this type of problem 
+
+class GameCharacter:
+    def __init__(self):
+        pass
+    def login(self):
+        print("1. Checking server connection...")
+        print("2. Loading player data and inventory...")
+        print("3. Rendering 3D character model...")
+        
+        
+class Mage(GameCharacter):
+    def __inti__(self):
+        pass
+    
+    def login(self):
+        super().login()
+        print("4. Mage : equip magical staff and mana potions.")
+        
+class Warrior(GameCharacter):
+    def __init__(self):
+        pass
+    
+    def login(self):
+        super().login()
+        print("4. Warrior : equip heavy sword and iron shield.")
+        
+        
+warrior_player = Warrior().login()
+mage_player = Mage().login()
