@@ -59,3 +59,74 @@ manager_checkout(bkash_user, 300)
 
 rocket_user = RocketPayment()
 manager_checkout(rocket_user, 900)
+
+
+# APPROACH 03: WITH OUT POLYMORPHISM (BAD PRACTICE) 
+# File system (file type export)
+
+class PDFExporter:
+    def convert_to_pdf(self , data):
+        print(f"[PDF] Converting data to PDF format. Content : '{data}'")
+        
+        
+class ExcelExporter:
+    def convert_to_excel(self, data):
+        print(f"[Excel] Converting data to Excel Rows/columns. content: '{data}'")
+
+x = ExcelExporter().convert_to_excel("excel")        
+        
+def download_button(exporter_object, data, file_type="excel"):
+    if file_type.lower() == "pdf":
+        exporter_object.convert_to_pdf(data)
+    elif file_type.lower() == "excel":
+        exporter_object.convert_to_excel(data)
+        
+        
+file1_data = "this is a python program to practicing python oop polymorphism concept."
+file1 = PDFExporter()
+download_button(file1, file1_data, "pdf")
+
+print("_____________________________\n")
+
+file2_data = "this is our daily costing sheets"
+file2 = ExcelExporter()
+download_button(file2, file2_data)
+        
+        
+
+
+# APPROACH 4 : WITH POLYMORPHISM  (good practice)
+# (File exporting system)
+
+class PDFExporter:
+    def convert_file(self, data):
+        print(f"[PDF] converting data to PDF format, content: {data} ")
+        
+class ExcelExporter:
+    def convert_file(self, data):
+        print(f"[Excel] converting data format to row/columns. content: {data}")        
+        
+class CSVExporter:
+    def convert_file(self,data):
+        print(f"[CSV] converting data format to comma separated value pairs. content: {data}")
+        
+
+
+def download_button(file_object, data):
+    file_object.convert_file(data)
+    print("data processing completed")
+    
+
+file1 = "this is a pdf file"
+file1_obj = PDFExporter()
+download_button(file1_obj,file1)
+
+file2 = "this is an excel file"
+file2_obj = ExcelExporter()
+download_button(file2_obj,file2)
+
+file3 = "this is a csv file"
+file3_obj = CSVExporter()
+download_button(file3_obj, file3)
+
+
